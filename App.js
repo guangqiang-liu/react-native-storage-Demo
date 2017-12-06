@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import {storage} from './storage'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,6 +21,20 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
+  componentDidMount() {
+    let obj = {}
+    obj.name = '张三'
+    obj.age = 20
+    obj.sex = 'man'
+    // 存
+    storage.save('userInfo', obj)
+    // 取
+    storage.load('userInfo', (data) => {
+      alert(data.name)
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
