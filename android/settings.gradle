@@ -1,0 +1,3 @@
+rootProject.name = 'StorageDemo'
+
+include ':app'
